@@ -4,7 +4,7 @@ set -e
 
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-echo "Setting up symlinks for dotfiles..."
+echo "Setting up dotfiles..."
 
 # Create .config directory if it doesn't exist
 mkdir -p "$HOME/.config"
@@ -27,8 +27,39 @@ link_file() {
     ln -s "$src" "$dest"
 }
 
+# Helper function to copy a file
+copy_file() {
+    local src="$1"
+    local dest="$2"
+    
+    if [ -e "$dest" ] || [ -L "$dest" ]; then
+        if [ ! -L "$dest" ] && cmp -s "$src" "$dest"; then
+            echo "Already copied: $dest"
+            return
+        fi
+
+        if [ -L "$dest" ]; then
+            echo "Removing existing symlink: $dest"
+            rm "$dest"
+        else
+            local backup="${dest}.backup.$(date +%Y%m%d%H%M%S)"
+            echo "Backing up existing: $dest -> $backup"
+            mv "$dest" "$backup"
+        fi
+    fi
+    
+    echo "Copying: $src -> $dest"
+    cp "$src" "$dest"
+}
+
 # nvim
 link_file "$DOTFILES_DIR/nvim" "$HOME/.config/nvim"
+
+# zed
+mkdir -p "$HOME/.config/zed"
+copy_file "$DOTFILES_DIR/zed/keymap.json" "$HOME/.config/zed/keymap.json"
+copy_file "$DOTFILES_DIR/zed/settings.json" "$HOME/.config/zed/settings.json"
+copy_file "$DOTFILES_DIR/zed/tasks.json" "$HOME/.config/zed/tasks.json"
 
 # tmux
 link_file "$DOTFILES_DIR/tmux/.tmux.conf" "$HOME/.tmux.conf"

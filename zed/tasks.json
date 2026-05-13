@@ -1,0 +1,30 @@
+// Project tasks configuration. See https://zed.dev/docs/tasks for documentation.
+[
+    {
+        "label": "claude",
+        "command": "claude",
+        "reveal": "always",
+        "use_new_terminal": true,
+        "allow_concurrent_runs": false,
+    },
+    {
+        "label": "codex",
+        "command": "codex",
+        "reveal": "always",
+        "use_new_terminal": true,
+        "allow_concurrent_runs": false,
+    },
+    {
+        "label": "fast c++",
+        "command": "clear && g++ -std=c++20 -Ddebug -O2 -Wall -lm -g \"$ZED_FILE\" -o \"$ZED_DIRNAME/$ZED_STEM\" && \"$ZED_DIRNAME/$ZED_STEM\"",
+        "cwd": "$ZED_DIRNAME",
+        "use_new_terminal": false,
+        "allow_concurrent_runs": true,
+        "reveal": "always",
+        "hide": "never",
+        "shell": "system",
+        "show_summary": true,
+        "show_command": true,
+        "save": "current",
+    },
+]

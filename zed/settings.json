@@ -1,0 +1,174 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+
+{
+    // ─── General ──────────────────────────────────────────────
+    "cli_default_open_behavior": "existing_window",
+    "base_keymap": "Cursor",
+    "vim_mode": true,
+    "vim": {
+        "use_system_clipboard": "never",
+    },
+    "session": {
+        "trust_all_worktrees": true,
+    },
+
+    // ─── Theme & Fonts ────────────────────────────────────────
+    "theme": "Catppuccin Mocha - Custom",
+    "icon_theme": "Catppuccin Frappé",
+    "ui_font_family": "UbuntuMono Nerd Font Mono",
+    "ui_font_size": 18,
+    "buffer_font_family": "UbuntuMono Nerd Font Mono",
+    "buffer_font_fallbacks": ["Ubuntu Mono", "Hack Nerd Font", "Courier New"],
+    "buffer_font_size": 18.0,
+    "buffer_line_height": "standard",
+
+    // ─── Editor ───────────────────────────────────────────────
+    "tab_size": 4,
+    "wrap_guides": [],
+    "relative_line_numbers": "enabled",
+    "show_completions_on_input": false,
+    "inline_code_actions": false,
+    "extend_comment_on_newline": false,
+    "scrollbar": {
+        "show": "never",
+    },
+    "gutter": {
+        "line_numbers": true,
+        "min_line_number_digits": 0,
+        "folds": false,
+    },
+    "show_edit_predictions": false,
+    "edit_predictions": {
+        "provider": "zed",
+        "mode": "eager",
+    },
+    "cursor_shape": "block",
+    "cursor_blink": false,
+    "selection_highlight": false,
+    "git": {
+        "inline_blame": {
+            "enabled": false,
+        },
+    },
+
+    // ─── Title Bar ────────────────────────────────────────────
+    "title_bar": {
+        // "show_onboarding_banner": false,
+        "show_user_picture": false,
+    },
+    "tab_bar": {
+        "show": false,
+    },
+    "toolbar": {
+        "quick_actions": false,
+    },
+    "status_bar": {
+        //"experimental.show": false,
+        "cursor_position_button": false,
+    },
+
+    // ─── Panels ───────────────────────────────────────────────
+    "project_panel": {
+        "dock": "right",
+        "hide_root": true,
+        "hide_hidden": true,
+        "git_status": false,
+        "default_width": 300,
+        "scrollbar": {
+            "show": "never",
+        },
+        "indent_guides": {
+            "show": "never",
+        },
+    },
+    "outline_panel": {
+        "dock": "left",
+        "default_width": 300,
+    },
+    "collaboration_panel": {
+        "dock": "left",
+    },
+    "git_panel": {
+        "dock": "left",
+        "tree_view": true,
+    },
+    "file_finder": {
+        "modal_max_width": "large",
+    },
+
+    // ─── Terminal ─────────────────────────────────────────────
+    "terminal": {
+        "font_size": 16.0,
+        "copy_on_select": true,
+    },
+
+    // ─── Agent (AI) ───────────────────────────────────────────
+    "agent": {
+        "dock": "right",
+        "default_profile": "write",
+        "default_model": {
+            "provider": "zed.dev",
+            "model": "gpt-5.5",
+            "enable_thinking": true,
+            "effort": "medium",
+        },
+        "favorite_models": [],
+        "model_parameters": [],
+        "tool_permissions": {
+            "tools": {
+                "terminal": {
+                    "always_allow": [{ "pattern": "^python\\b" }],
+                },
+            },
+        },
+    },
+    "agent_servers": {
+        "codex-acp": {
+            "type": "registry",
+        },
+        "pi-acp": { "type": "registry" },
+        "claude-acp": { "type": "registry" },
+        "opencode": {
+            "favorite_config_option_values": {
+                "model": ["opencode/minimax-m2.5-free"],
+            },
+            "type": "registry",
+        },
+    },
+
+    // ─── SSH Connections ──────────────────────────────────────
+    "ssh_connections": [
+        {
+            "host": "MyWSL",
+            "args": [],
+            "projects": [],
+        },
+        {
+            "host": "new_eda",
+            "args": [],
+            "projects": [{ "paths": ["/home/gilbert12/eda-scheduler"] }],
+        },
+        {
+            "host": "nano5",
+            "args": [],
+            "projects": [{ "paths": ["/work/u4876763"] }],
+        },
+        {
+            "host": "twnia2",
+            "args": [],
+            "projects": [],
+        },
+        {
+            "host": "apollo-origo",
+            "args": [],
+            "projects": [{ "paths": ["/home/gilbert12"] }],
+        },
+    ],
+}
