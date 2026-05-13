@@ -7,6 +7,7 @@ vim.cmd("let g:netrw_banner = 0")
 vim.opt.clipboard = ""
 
 vim.opt.termguicolors = true
+
 -- line numbers
 vim.opt.nu = true
 vim.opt.relativenumber = true
@@ -18,6 +19,9 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.smartindent = false
 vim.opt.wrap = false
+
+-- cursorline
+vim.opt.cursorline=true
 
 -- Always hard wrap at 80 characters in every file
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
