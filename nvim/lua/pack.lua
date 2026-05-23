@@ -1,5 +1,5 @@
 vim.pack.add({
-    "https://github.com/bluz71/vim-moonfly-colors",
+    { src = "https://github.com/catppuccin/nvim", name = "catppuccin" },
     "https://github.com/nvim-mini/mini.nvim",
     "https://github.com/rafamadriz/friendly-snippets",
     { src = "https://github.com/nvim-treesitter/nvim-treesitter", branch = "main" },
@@ -7,6 +7,36 @@ vim.pack.add({
     "https://github.com/mason-org/mason.nvim",
     "https://github.com/tpope/vim-fugitive",
 })
+
+--- colorscheme ---
+require("catppuccin").setup({
+    flavour = "mocha",
+    transparent_background = true,
+    integrations = {
+        mini = {
+            enabled = true,
+        },
+    },
+})
+
+vim.cmd.colorscheme("catppuccin")
+
+local transparent_groups = {
+    "Normal",
+    "NormalNC",
+    "NormalFloat",
+    "FloatBorder",
+    "Pmenu",
+    "SignColumn",
+    "StatusLine",
+    "StatusLineNC",
+    "TabLine",
+    "TabLineFill",
+}
+
+for _, group in ipairs(transparent_groups) do
+    vim.api.nvim_set_hl(0, group, { bg = "NONE" })
+end
 
 -- mini files ----
 local MiniFiles = require("mini.files")
