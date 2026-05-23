@@ -32,6 +32,7 @@ vim.opt.scrolloff = 7
 vim.opt.completeopt = "menuone,noselect,fuzzy,nosort"
 vim.o.cmdheight = 0
 vim.opt.signcolumn = "yes"
+vim.opt.autoread = true
 
 vim.opt.termguicolors = true
 
