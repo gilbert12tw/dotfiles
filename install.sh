@@ -65,6 +65,6 @@ copy_file "$DOTFILES_DIR/zed/tasks.json" "$HOME/.config/zed/tasks.json"
 link_file "$DOTFILES_DIR/tmux/.tmux.conf" "$HOME/.tmux.conf"
 
 # vim
-link_file "$DOTFILES_DIR/vim/.vimrc" "$HOME/.vimrc"
+copy_file "$DOTFILES_DIR/vim/.vimrc" "$HOME/.vimrc"
 
 echo "Done!"
