@@ -1,14 +1,17 @@
 vim.pack.add({
     { src = "https://github.com/catppuccin/nvim", name = "catppuccin" },
     "https://github.com/nvim-mini/mini.nvim",
+    "https://github.com/nvim-lua/plenary.nvim",
     "https://github.com/rafamadriz/friendly-snippets",
     { src = "https://github.com/nvim-treesitter/nvim-treesitter", branch = "main" },
     "https://github.com/neovim/nvim-lspconfig",
     "https://github.com/mason-org/mason.nvim",
+    { src = "https://github.com/ThePrimeagen/harpoon", version = "harpoon2" },
     "https://github.com/tpope/vim-fugitive",
 })
 
 require("colorscheme")
+require("plugins.harpoon")
 
 -- mini files ----
 local MiniFiles = require("mini.files")
