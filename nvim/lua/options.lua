@@ -36,6 +36,13 @@ vim.opt.autoread = true
 
 vim.opt.termguicolors = true
 
+--- fold ---
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 99
+vim.opt.foldenable = true
+
 vim.api.nvim_create_autocmd("TextYankPost", {
     desc = "Highlight when yanking text",
     callback = function()

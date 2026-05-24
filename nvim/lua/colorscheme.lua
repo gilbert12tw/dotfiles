@@ -1,6 +1,7 @@
 require("catppuccin").setup({
     flavour = "mocha",
     transparent_background = true,
+    auto_integrations = true,
     styles = {
         comments = {},
         conditionals = {},
@@ -11,11 +12,6 @@ require("catppuccin").setup({
         properties = {},
         types = {},
         variables = {},
-    },
-    integrations = {
-        mini = {
-            enabled = true,
-        },
     },
 })
 

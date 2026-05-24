@@ -11,6 +11,7 @@ vim.pack.add({
     { src = "https://github.com/ThePrimeagen/harpoon", version = "harpoon2" },
     "https://github.com/tpope/vim-fugitive",
     "https://github.com/folke/snacks.nvim",
+    "https://github.com/toppair/peek.nvim",
 })
 
 require("colorscheme")
@@ -18,6 +19,8 @@ require("plugins.snacks")
 require("plugins.harpoon")
 require("plugins.aerial")
 require("plugins.mini")
+require("plugins.markdown")
+require("plugins.peek")
 
 --- nvim treesitter ---
 require("treesitter")

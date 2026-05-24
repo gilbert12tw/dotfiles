@@ -51,7 +51,7 @@ require("snacks").setup({
                 cmd = "pokemon-colorscripts -r;",
                 random = 10,
                 pane = 2,
-                indent = 18,
+                indent = 12,
                 height = 30,
                 col = nil,
             },
@@ -62,6 +62,7 @@ require("snacks").setup({
         timeout = 3000,
         style = "compact",
     },
+    terminal = {},
     quickfile = {},
     bigfile = {},
     zen = {
