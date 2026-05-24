@@ -69,6 +69,11 @@
       "rev": "0d7d35fa946837b8738b17c18d1faa1ac351e7f9",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
     },
+    "obsidian.nvim": {
+      "rev": "ed6f386abe83e4dafa9afecf50cd9d9fff072a07",
+      "src": "https://github.com/obsidian-nvim/obsidian.nvim",
+      "version": ">=0.0.0"
+    },
     "peek.nvim": {
       "rev": "5820d937d5414baea5f586dc2a3d912a74636e5b",
       "src": "https://github.com/toppair/peek.nvim"
@@ -112,6 +117,10 @@
     "which-key.nvim": {
       "rev": "3aab2147e74890957785941f0c1ad87d0a44c15a",
       "src": "https://github.com/folke/which-key.nvim"
+    },
+    "zk-nvim": {
+      "rev": "bc3b39374b25fad977cecc936588cb060f15a773",
+      "src": "https://github.com/zk-org/zk-nvim"
     }
   }
 }

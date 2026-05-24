@@ -51,7 +51,7 @@ require("snacks").setup({
                 cmd = "pokemon-colorscripts -r;",
                 random = 10,
                 pane = 2,
-                indent = 12,
+                indent = 8,
                 height = 30,
                 col = nil,
             },

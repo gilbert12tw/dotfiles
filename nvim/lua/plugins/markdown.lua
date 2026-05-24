@@ -23,7 +23,7 @@ local function markdown_snapshot()
 end
 
 function M.glow()
-    Snacks.terminal({ "glow", "-p", markdown_snapshot() }, {
+    Snacks.terminal({ "glow", "-w", "100", "-p", markdown_snapshot() }, {
         auto_close = true,
         interactive = true,
         win = {

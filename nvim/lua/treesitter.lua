@@ -3,7 +3,7 @@ local treesitter = require("nvim-treesitter")
 local ensuire_installed = {
     -- languages
     "go", "cpp", "c", "python", "typescript", "javascript",
-    "html", "css", "bash", "lua",
+    "html", "css", "bash", "lua", "markdown", "markdown_inline",
     -- extras
     "http", "json", "dockerfile", "yaml",
 }
