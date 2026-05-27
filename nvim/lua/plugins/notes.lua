@@ -65,6 +65,72 @@ local function input_title(prompt, callback)
     end)
 end
 
+local function note_name(path)
+    return vim.fn.fnamemodify(path, ":t:r")
+end
+
+local function edit_note(note)
+    if note and note.absPath then
+        vim.cmd.edit(vim.fn.fnameescape(note.absPath))
+    end
+end
+
+local function pick_notes(opts)
+    local ok_api, api = pcall(require, "zk.api")
+    if not ok_api then
+        notify_missing("zk.nvim")
+        return
+    end
+
+    opts = opts or {}
+    opts.select = { "title", "path", "absPath" }
+
+    api.list(opts.notebook_path, opts, function(err, notes)
+        if err then
+            vim.schedule(function()
+                vim.notify(tostring(err), vim.log.levels.ERROR, { title = "zk.nvim" })
+            end)
+            return
+        end
+
+        vim.schedule(function()
+            Snacks.picker.pick("Zk Notes", {
+                items = vim.tbl_map(function(note)
+                    local name = note_name(note.absPath or note.path)
+                    return {
+                        text = name,
+                        file = note.absPath,
+                        value = note,
+                        preview = { file = note.absPath },
+                    }
+                end, notes or {}),
+                format = "text",
+                layout = {
+                    preset = "ivy",
+                    layout = {
+                        position = "bottom",
+                    },
+                },
+                confirm = function(picker, item)
+                    picker:close()
+                    edit_note(item.value)
+                end,
+            })
+        end)
+    end)
+end
+
+local function setup_note_link_completion(bufnr)
+    if not is_zk_notebook_buffer(bufnr) then
+        return
+    end
+
+    vim.keymap.set("i", "[[", "[[<Cmd>lua vim.schedule(function() require('mini.completion').complete_twostage(false, true) end)<CR>", {
+        buffer = bufnr,
+        desc = "Complete note link",
+    })
+end
+
 local zk_ok, zk = pcall(require, "zk")
 if zk_ok then
     local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -170,6 +236,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", "FileType" }, {
     callback = function(args)
         vim.schedule(function()
             detach_marksman_from_notes(args.buf)
+            setup_note_link_completion(args.buf)
         end)
     end,
 })
@@ -182,7 +249,7 @@ vim.keymap.set("n", "<leader>nn", function()
             title = title,
         })
     end)
-end, { desc = "New normal note" })
+end, { desc = "New quick note" })
 
 vim.keymap.set("n", "<leader>nd", function()
     vim.cmd("Obsidian workspace note")
@@ -200,7 +267,7 @@ vim.keymap.set("n", "<leader>nc", function()
 end, { desc = "New CP note" })
 
 vim.keymap.set("n", "<leader>no", function()
-    zk_cmd("ZkNotes", {
+    pick_notes({
         notebook_path = notebook_root(),
         sort = { "modified" },
     })
@@ -212,7 +279,7 @@ vim.keymap.set("n", "<leader>nf", function()
             return
         end
 
-        zk_cmd("ZkNotes", {
+        pick_notes({
             notebook_path = notebook_root(),
             sort = { "modified" },
             match = { query },
@@ -231,9 +298,7 @@ end, { desc = "Search note tags" })
 vim.keymap.set("n", "<leader>nb", "<cmd>ZkBacklinks<CR>", { desc = "Note backlinks" })
 vim.keymap.set("n", "<leader>nl", "<cmd>ZkLinks<CR>", { desc = "Note outbound links" })
 vim.keymap.set("n", "<leader>ni", "<cmd>ZkIndex<CR>", { desc = "Index notes" })
-vim.keymap.set("n", "<leader>np", "<cmd>Obsidian paste_img<CR>", { desc = "Paste image into note" })
 vim.keymap.set("n", "<leader>nw", "<cmd>Obsidian workspace<CR>", { desc = "Switch Obsidian workspace" })
-vim.keymap.set("n", "<leader>nx", "<cmd>Obsidian toggle_checkbox<CR>", { desc = "Toggle Obsidian checkbox" })
 vim.keymap.set("n", "<leader>nO", "<cmd>Obsidian open<CR>", { desc = "Open note in Obsidian" })
 
 return M

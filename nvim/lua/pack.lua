@@ -3,6 +3,7 @@ vim.pack.add({
     "https://github.com/nvim-mini/mini.nvim",
     "https://github.com/nvim-lua/plenary.nvim",
     "https://github.com/nvim-tree/nvim-web-devicons",
+    "https://github.com/nvim-lualine/lualine.nvim",
     "https://github.com/rafamadriz/friendly-snippets",
     { src = "https://github.com/nvim-treesitter/nvim-treesitter", branch = "main" },
     "https://github.com/neovim/nvim-lspconfig",
@@ -12,17 +13,21 @@ vim.pack.add({
     "https://github.com/tpope/vim-fugitive",
     "https://github.com/folke/snacks.nvim",
     "https://github.com/toppair/peek.nvim",
+    "https://github.com/mikavilpas/yazi.nvim",
     "https://github.com/zk-org/zk-nvim",
     { src = "https://github.com/obsidian-nvim/obsidian.nvim", version = vim.version.range("*") },
+    "https://github.com/ThePrimeagen/vim-be-good",
 })
 
 require("colorscheme")
 require("plugins.snacks")
+require("plugins.lualine")
 require("plugins.harpoon")
 require("plugins.aerial")
 require("plugins.mini")
 require("plugins.markdown")
 require("plugins.peek")
+require("plugins.yazi")
 require("plugins.notes")
 
 --- nvim treesitter ---
