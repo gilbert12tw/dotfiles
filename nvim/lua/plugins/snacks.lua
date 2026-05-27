@@ -71,8 +71,14 @@ require("snacks").setup({
         },
     },
     indent = {
+        indent = {
+            char = "",
+        },
+        scope = {
+            char = "¦",
+        },
         animate = {
-            enabled = false,
+            enabled = true,
         },
     },
     gitbrowse = {
