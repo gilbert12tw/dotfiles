@@ -9,6 +9,12 @@
 
 {
     // ─── General ──────────────────────────────────────────────
+    "languages": {
+        "Python": {
+            "show_edit_predictions": false,
+        },
+    },
+    "diff_view_style": "unified",
     "cli_default_open_behavior": "existing_window",
     "base_keymap": "Cursor",
     "vim_mode": true,
@@ -28,6 +34,8 @@
     "buffer_font_fallbacks": ["Ubuntu Mono", "Hack Nerd Font", "Courier New"],
     "buffer_font_size": 18.0,
     "buffer_line_height": "standard",
+    // "use_autoclose": true,
+    "always_treat_brackets_as_autoclosed": true,
 
     // ─── Editor ───────────────────────────────────────────────
     "tab_size": 4,
@@ -111,13 +119,17 @@
 
     // ─── Agent (AI) ───────────────────────────────────────────
     "agent": {
+        "inline_assistant_model": {
+            "provider": "zed.dev",
+            "model": "claude-sonnet-4-6",
+            "enable_thinking": false
+        },
         "dock": "right",
         "default_profile": "write",
         "default_model": {
-            "provider": "zed.dev",
+            "provider": "openai-subscribed",
             "model": "gpt-5.5",
             "enable_thinking": true,
-            "effort": "medium",
         },
         "favorite_models": [],
         "model_parameters": [],
@@ -133,8 +145,6 @@
         "codex-acp": {
             "type": "registry",
         },
-        "pi-acp": { "type": "registry" },
-        "claude-acp": { "type": "registry" },
         "opencode": {
             "favorite_config_option_values": {
                 "model": ["opencode/minimax-m2.5-free"],

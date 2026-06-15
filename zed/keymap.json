@@ -28,7 +28,6 @@
         "context": "Terminal",
         "bindings": {
             "ctrl-h": "workspace::ActivatePaneLeft",
-            "ctrl-j": "workspace::ActivatePaneDown",
             "ctrl-k": "workspace::ActivatePaneUp",
         },
     },
@@ -41,4 +40,34 @@
             "ctrl-l": "workspace::ActivatePaneRight",
         },
     },
+    {
+        "context": "Pane",
+        "unbind": {
+            "cmd-shift-g": "search::SelectPreviousMatch"
+        }
+    },
+    {
+        "context": "vim_mode == insert",
+        "unbind": {
+            "ctrl-x ctrl-o": "editor::ShowCompletions"
+        }
+    },
+    {
+        "context": "vim_mode == insert && !(showing_code_actions || showing_completions)",
+        "bindings": {
+            "ctrl-y": "editor::ShowCompletions"
+        }
+    },
+    {
+        "context": "Editor",
+        "unbind": {
+            "ctrl-space": "editor::ShowCompletions"
+        }
+    },
+    {
+        "context": "vim_mode == insert && !(showing_code_actions || showing_completions)",
+        "bindings": {
+            "ctrl-n": "editor::ShowWordCompletions"
+        }
+    }
 ]

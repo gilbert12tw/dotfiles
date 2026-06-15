@@ -2,7 +2,7 @@
 keybind = global:super+backslash=toggle_quick_terminal
 
 # By default Reload config with shft + cmd + ,
-config-file = ~/.ghossty/themes/catppuccin-mocha
+config-file = ~/.config/ghostty/themes/catppuccin-mocha
 
 background-opacity = 0.95
 background-blur-radius = 25
@@ -40,4 +40,3 @@ copy-on-select = clipboard
 clipboard-read = allow
 clipboard-write = allow
 # cmd or alt c copy (not vim yank)
-
