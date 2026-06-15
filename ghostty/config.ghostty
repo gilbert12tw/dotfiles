@@ -1,0 +1,43 @@
+# By default super = cmd
+keybind = global:super+backslash=toggle_quick_terminal
+
+# By default Reload config with shft + cmd + ,
+config-file = ~/.ghossty/themes/catppuccin-mocha
+
+background-opacity = 0.95
+background-blur-radius = 25
+
+font-family = "UbuntuMono Nerd Font"
+font-family = "PingFang TC"
+
+# font-style = Regular
+# font-style-bold = SemiBold
+# font-style-italic = Italic
+# font-style-bold-italic = SemiBold Italic
+
+font-size = 16
+font-feature = -liga,-calt,-dlig
+cursor-style = block
+cursor-style-blink = false
+cursor-color = cell-foreground
+cursor-text = cell-background
+unfocused-split-opacity = 0.55
+# split-divider-color = #524f67
+
+macos-titlebar-style = hidden
+macos-option-as-alt = true
+mouse-hide-while-typing = true
+
+confirm-close-surface = false
+window-decoration = auto
+
+auto-update = check
+auto-update-channel = stable
+
+# extras
+shell-integration-features = no-cursor
+copy-on-select = clipboard
+clipboard-read = allow
+clipboard-write = allow
+# cmd or alt c copy (not vim yank)
+
