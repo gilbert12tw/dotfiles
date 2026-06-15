@@ -1,3 +1,4 @@
+
 // Zed settings
 //
 // For information on how to configure Zed, see the Zed
@@ -118,67 +119,9 @@
     },
 
     // ─── Agent (AI) ───────────────────────────────────────────
-    "agent": {
-        "inline_assistant_model": {
-            "provider": "zed.dev",
-            "model": "claude-sonnet-4-6",
-            "enable_thinking": false
-        },
-        "dock": "right",
-        "default_profile": "write",
-        "default_model": {
-            "provider": "openai-subscribed",
-            "model": "gpt-5.5",
-            "enable_thinking": true,
-        },
-        "favorite_models": [],
-        "model_parameters": [],
-        "tool_permissions": {
-            "tools": {
-                "terminal": {
-                    "always_allow": [{ "pattern": "^python\\b" }],
-                },
-            },
-        },
-    },
-    "agent_servers": {
-        "codex-acp": {
-            "type": "registry",
-        },
-        "opencode": {
-            "favorite_config_option_values": {
-                "model": ["opencode/minimax-m2.5-free"],
-            },
-            "type": "registry",
-        },
-    },
+    "agent": {},
+    "agent_servers": {},
 
     // ─── SSH Connections ──────────────────────────────────────
-    "ssh_connections": [
-        {
-            "host": "MyWSL",
-            "args": [],
-            "projects": [],
-        },
-        {
-            "host": "new_eda",
-            "args": [],
-            "projects": [{ "paths": ["/home/gilbert12/eda-scheduler"] }],
-        },
-        {
-            "host": "nano5",
-            "args": [],
-            "projects": [{ "paths": ["/work/u4876763"] }],
-        },
-        {
-            "host": "twnia2",
-            "args": [],
-            "projects": [],
-        },
-        {
-            "host": "apollo-origo",
-            "args": [],
-            "projects": [{ "paths": ["/home/gilbert12"] }],
-        },
-    ],
+    "ssh_connections": [],
 }
