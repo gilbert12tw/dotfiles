@@ -66,6 +66,29 @@ copy_file() {
     cp "$src" "$dest"
 }
 
+# Helper function to copy a directory
+copy_dir() {
+    local src="$1"
+    local dest="$2"
+
+    mkdir -p "$(dirname "$dest")"
+
+    if [ -e "$dest" ] || [ -L "$dest" ]; then
+        if [ -L "$dest" ]; then
+            echo "Removing existing symlink: $dest"
+            rm "$dest"
+        elif diff -qr "$src" "$dest" >/dev/null; then
+            echo "Already copied: $dest"
+            return
+        else
+            backup_path "$dest"
+        fi
+    fi
+
+    echo "Copying: $src -> $dest"
+    cp -R "$src" "$dest"
+}
+
 # nvim
 link_file "$DOTFILES_DIR/nvim" "$CONFIG_DIR/nvim"
 
@@ -73,7 +96,7 @@ link_file "$DOTFILES_DIR/nvim" "$CONFIG_DIR/nvim"
 copy_file "$DOTFILES_DIR/zed/keymap.json" "$CONFIG_DIR/zed/keymap.json"
 copy_file "$DOTFILES_DIR/zed/settings.json" "$CONFIG_DIR/zed/settings.json"
 copy_file "$DOTFILES_DIR/zed/tasks.json" "$CONFIG_DIR/zed/tasks.json"
-link_file "$DOTFILES_DIR/zed/themes" "$CONFIG_DIR/zed/themes"
+copy_dir "$DOTFILES_DIR/zed/themes" "$CONFIG_DIR/zed/themes"
 
 case "$(uname -s)" in
     Darwin)
@@ -90,7 +113,7 @@ esac
 if [ -n "$zed_data_dir" ] && [ -d "$DOTFILES_DIR/zed/extensions" ]; then
     for ext_dir in "$DOTFILES_DIR"/zed/extensions/*; do
         [ -d "$ext_dir" ] || continue
-        link_file "$ext_dir" "$zed_data_dir/extensions/installed/$(basename "$ext_dir")"
+        copy_dir "$ext_dir" "$zed_data_dir/extensions/installed/$(basename "$ext_dir")"
     done
 fi
 

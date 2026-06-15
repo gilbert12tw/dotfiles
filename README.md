@@ -29,8 +29,8 @@ cd ~/dotfiles
 * Copies `zed/keymap.json` to `~/.config/zed/keymap.json`
 * Copies `zed/settings.json` to `~/.config/zed/settings.json`
 * Copies `zed/tasks.json` to `~/.config/zed/tasks.json`
-* Symlinks `zed/themes/` to `~/.config/zed/themes`
-* Symlinks bundled Zed extensions, currently `catppuccin-icons`, into Zed's user data directory
+* Copies `zed/themes/` to `~/.config/zed/themes`
+* Copies bundled Zed extensions, currently `catppuccin-icons`, into Zed's user data directory
 * Symlinks `tmux/.tmux.conf` to `~/.tmux.conf`
 * Symlinks `vim/.vimrc` to `~/.vimrc`
 
