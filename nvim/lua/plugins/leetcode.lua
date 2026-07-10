@@ -1,3 +1,5 @@
+local previous_showtabline
+
 require("leetcode").setup({
     arg = "leetcode.nvim",
     lang = "cpp",
@@ -43,6 +45,22 @@ require("leetcode").setup({
         testcase = {
             virt_text = true,
             size = "40%",
+        },
+    },
+    hooks = {
+        enter = {
+            function()
+                previous_showtabline = previous_showtabline or vim.o.showtabline
+                vim.o.showtabline = 0
+            end,
+        },
+        leave = {
+            function()
+                if previous_showtabline then
+                    vim.o.showtabline = previous_showtabline
+                    previous_showtabline = nil
+                end
+            end,
         },
     },
 })
