@@ -2,6 +2,7 @@ vim.pack.add({
     { src = "https://github.com/catppuccin/nvim", name = "catppuccin" },
     "https://github.com/nvim-mini/mini.nvim",
     "https://github.com/nvim-lua/plenary.nvim",
+    "https://github.com/MunifTanjim/nui.nvim",
     "https://github.com/nvim-tree/nvim-web-devicons",
     "https://github.com/nvim-lualine/lualine.nvim",
     "https://github.com/rafamadriz/friendly-snippets",
@@ -16,6 +17,7 @@ vim.pack.add({
     "https://github.com/mikavilpas/yazi.nvim",
     "https://github.com/zk-org/zk-nvim",
     { src = "https://github.com/obsidian-nvim/obsidian.nvim", version = vim.version.range("*") },
+    "https://github.com/kawre/leetcode.nvim",
     "https://github.com/ThePrimeagen/vim-be-good",
 })
 
@@ -29,6 +31,7 @@ require("plugins.markdown")
 require("plugins.peek")
 require("plugins.yazi")
 require("plugins.notes")
+require("plugins.leetcode")
 
 --- nvim treesitter ---
 require("treesitter")

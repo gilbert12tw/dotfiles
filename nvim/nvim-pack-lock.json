@@ -41,6 +41,10 @@
       "src": "https://github.com/ThePrimeagen/harpoon",
       "version": "'harpoon2'"
     },
+    "leetcode.nvim": {
+      "rev": "4e8b3683940a8377379ce9398e7f329e3560b42c",
+      "src": "https://github.com/kawre/leetcode.nvim"
+    },
     "lualine.nvim": {
       "rev": "131a558e13f9f28b15cd235557150ccb23f89286",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
@@ -60,6 +64,10 @@
     "mini.nvim": {
       "rev": "a405061478d8027b4e21214d897ce1eb33115792",
       "src": "https://github.com/nvim-mini/mini.nvim"
+    },
+    "nui.nvim": {
+      "rev": "de740991c12411b663994b2860f1a4fd0937c130",
+      "src": "https://github.com/MunifTanjim/nui.nvim"
     },
     "nvim-lspconfig": {
       "rev": "a4ed4e761c400849e8c9f8bda33e5083f890268c",
