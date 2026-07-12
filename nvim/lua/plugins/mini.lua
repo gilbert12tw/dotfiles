@@ -51,42 +51,10 @@ require("mini.surround").setup()
 --- mini completions ---
 local MiniCompletion = require("mini.completion")
 
-local function in_wiki_link()
-    local row, col = unpack(vim.api.nvim_win_get_cursor(0))
-    local before_cursor = vim.api.nvim_buf_get_lines(0, row - 1, row, false)[1] or ""
-    before_cursor = before_cursor:sub(1, col)
-
-    local link_start = before_cursor:match(".*()%[%[[^%]]*$")
-    if not link_start then
-        return false
-    end
-
-    return before_cursor:sub(link_start):find("%]%]") == nil
-end
-
-local function client_name(item)
-    local client = item.client_id and vim.lsp.get_client_by_id(item.client_id)
-    return client and client.name or ""
-end
-
 MiniCompletion.setup({
     lsp_completion = {
         auto_setup = true,
         process_items = function(items, base)
-            local is_wiki_link_completion = (base or ""):find("^%[%[") ~= nil or in_wiki_link()
-
-            if is_wiki_link_completion then
-                items = vim.tbl_filter(function(item)
-                    return client_name(item) == "zk"
-                end, items)
-
-                -- zk returns wiki-link text edits for the whole `[[...` range,
-                -- but mini.completion filters candidates using the typed base.
-                -- Drop the opening brackets so `[[` shows all notes and
-                -- `[[foo` fuzzy-matches note names/paths with `foo`.
-                base = (base or ""):gsub("^%[%[", "")
-            end
-
             return MiniCompletion.default_process_items(items, base, {
                 filtersort = "fuzzy",
             })

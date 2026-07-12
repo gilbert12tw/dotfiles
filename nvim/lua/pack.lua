@@ -15,8 +15,6 @@ vim.pack.add({
     "https://github.com/folke/snacks.nvim",
     "https://github.com/toppair/peek.nvim",
     "https://github.com/mikavilpas/yazi.nvim",
-    "https://github.com/zk-org/zk-nvim",
-    { src = "https://github.com/obsidian-nvim/obsidian.nvim", version = vim.version.range("*") },
     "https://github.com/kawre/leetcode.nvim",
     "https://github.com/ThePrimeagen/vim-be-good",
 })
@@ -30,7 +28,6 @@ require("plugins.mini")
 require("plugins.markdown")
 require("plugins.peek")
 require("plugins.yazi")
-require("plugins.notes")
 require("plugins.leetcode")
 
 --- nvim treesitter ---
