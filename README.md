@@ -5,8 +5,11 @@ These are my personal dotfiles for easily setting up my environment on a new mac
 ## Contents
 
 - **Neovim** (`nvim/`) - Configuration for Neovim (init.lua, lazy plugin manager, etc.)
+- **Helix** (`helix/`) - Helix editor configuration and language settings
 - **Ghostty** (`ghostty/`) - Ghostty terminal config and bundled themes
+- **iTerm2** (`iterm2/`) - Catppuccin Mocha profile and color preset
 - **Zed** (`zed/`) - Zed editor settings, keymap, tasks, custom themes, and required icon theme extension
+- **Herdr** (`herdr/config.toml`) - Herdr terminal workspace configuration
 - **Tmux** (`tmux/.tmux.conf`) - Tmux multiplexer configuration
 - **Vim** (`vim/.vimrc`) - Classic Vim configuration
 
@@ -23,9 +26,12 @@ cd ~/dotfiles
 ### What the script does
 
 * Symlinks `nvim/` to `~/.config/nvim`
+* Symlinks `helix/` to `~/.config/helix`
+* Symlinks `herdr/config.toml` to `~/.config/herdr/config.toml`
 * Symlinks `ghostty/config.ghostty` to `~/.config/ghostty/config.ghostty`
 * Symlinks `ghostty/themes/` to `~/.config/ghostty/themes`
 * On macOS, also symlinks `ghostty/config.ghostty` to `~/Library/Application Support/com.mitchellh.ghostty/config.ghostty`
+* On macOS, installs the iTerm2 profile into `~/Library/Application Support/iTerm2/DynamicProfiles/`
 * Copies `zed/keymap.json` to `~/.config/zed/keymap.json`
 * Copies `zed/settings.json` to `~/.config/zed/settings.json`
 * Copies `zed/tasks.json` to `~/.config/zed/tasks.json`
@@ -39,7 +45,10 @@ cd ~/dotfiles
 Ensure you have the corresponding software installed before or after setting up the dotfiles:
 
 * [Neovim](https://neovim.io/)
+* [Helix](https://helix-editor.com/)
 * [Ghostty](https://ghostty.org/)
+* [iTerm2](https://iterm2.com/) (macOS only)
 * [Zed](https://zed.dev/)
+* [Herdr](https://herdr.dev/)
 * [Tmux](https://github.com/tmux/tmux/wiki)
 * [Vim](https://www.vim.org/)

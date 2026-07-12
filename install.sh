@@ -92,6 +92,12 @@ copy_dir() {
 # nvim
 link_file "$DOTFILES_DIR/nvim" "$CONFIG_DIR/nvim"
 
+# helix
+link_file "$DOTFILES_DIR/helix" "$CONFIG_DIR/helix"
+
+# herdr
+link_file "$DOTFILES_DIR/herdr/config.toml" "$CONFIG_DIR/herdr/config.toml"
+
 # zed
 copy_file "$DOTFILES_DIR/zed/keymap.json" "$CONFIG_DIR/zed/keymap.json"
 copy_file "$DOTFILES_DIR/zed/settings.json" "$CONFIG_DIR/zed/settings.json"
@@ -124,6 +130,32 @@ link_file "$DOTFILES_DIR/ghostty/themes" "$CONFIG_DIR/ghostty/themes"
 if [ "$(uname -s)" = "Darwin" ]; then
     ghostty_macos_dir="$HOME/Library/Application Support/com.mitchellh.ghostty"
     link_file "$DOTFILES_DIR/ghostty/config.ghostty" "$ghostty_macos_dir/config.ghostty"
+
+    # iTerm2 dynamic profiles require the exported profile to be wrapped in a
+    # top-level "Profiles" array.
+    iterm2_profile_dir="$HOME/Library/Application Support/iTerm2/DynamicProfiles"
+    iterm2_profile="$iterm2_profile_dir/catppuccin-mocha.json"
+    mkdir -p "$iterm2_profile_dir"
+    temp_profile="$(mktemp "${TMPDIR:-/tmp}/dotfiles-iterm2.XXXXXX")"
+    {
+        printf '{\n  "Profiles": [\n'
+        cat "$DOTFILES_DIR/iterm2/catppuccin-mocha.json"
+        printf '\n  ]\n}\n'
+    } > "$temp_profile"
+
+    if [ -e "$iterm2_profile" ] || [ -L "$iterm2_profile" ]; then
+        if cmp -s "$temp_profile" "$iterm2_profile"; then
+            echo "Already copied: $iterm2_profile"
+            rm "$temp_profile"
+        else
+            backup_path "$iterm2_profile"
+            echo "Copying: $DOTFILES_DIR/iterm2/catppuccin-mocha.json -> $iterm2_profile"
+            mv "$temp_profile" "$iterm2_profile"
+        fi
+    else
+        echo "Copying: $DOTFILES_DIR/iterm2/catppuccin-mocha.json -> $iterm2_profile"
+        mv "$temp_profile" "$iterm2_profile"
+    fi
 fi
 
 # tmux
